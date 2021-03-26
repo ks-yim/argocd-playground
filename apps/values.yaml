@@ -1,0 +1,9 @@
+app:
+  phase: alpha
+
+destination:
+  server: https://kubernetes.default.svc
+
+namespaces:
+  - monitoring
+  - hello
