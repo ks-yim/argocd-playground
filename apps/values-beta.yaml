@@ -1,1 +1,2 @@
-app.phase: beta
+app:
+  phase: beta
