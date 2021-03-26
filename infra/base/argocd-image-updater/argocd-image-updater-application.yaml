@@ -1,0 +1,13 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: line-channel-argocd-image-updater
+spec:
+  project: default
+  source:
+    repoURL: "https://github.com/ks-yim/argocd-playground"
+    path: infra/base/argocd-image-updater
+    targetRevision: HEAD
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: default
