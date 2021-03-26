@@ -1,0 +1,40 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ingress-nginx
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: ingress-nginx
+  source:
+    repoURL: https://kubernetes.github.io/ingress-nginx
+    # Do not update the `targetRevision`. Revision >= 3.0.0 requires kubernetes verison >= 1.6.0
+    targetRevision: 2.16.0
+    chart: ingress-nginx
+    helm:
+      releaseName: ingress-nginx
+      valueFiles:
+        - values.yaml
+      values: |
+        controller:
+          replicaCount: 2
+          service:
+            externalTrafficPolicy: Local
+            healthCheckNodePort: 30254
+            nodePorts:
+              http: 30080
+              https: 30443
+          metrics:
+            enabled: true
+          podLabels:
+            channel.linecorp.com/service: line-channel
+            channel.linecorp.com/phase: beta
+            channel.linecorp.com/project: line-channel-ingress-nginx
+          podAnnotations:
+            prometheus.io/scrape: "true"
+            prometheus.io/port: "10254"
+            prometheus.io/path: "/metrics"

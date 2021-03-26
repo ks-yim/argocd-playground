@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: argocd-server-ing
+  namespace: argocd
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/backend-protocol: HTTPS
+spec:
+  rules:
+    - host: channel-argo.line-apps-beta.com
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: argocd-server
+              servicePort: https
