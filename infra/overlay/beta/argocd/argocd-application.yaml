@@ -5,5 +5,5 @@ metadata:
   namespace: argocd
 spec:
   source:
-    path: infra/overlay/beta
+    path: infra/overlay/beta/argocd
     targetRevision: HEAD
