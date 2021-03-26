@@ -6,10 +6,5 @@ images:
     newName: argoproj/argocd
     newTag: v2.0.0-rc1
 resources:
-  - https://github.com/argoproj/argo-cd/manifests/base/application-controller?ref=v2.0.0-rc1
-  - https://github.com/argoproj/argo-cd/manifests/base/dex?ref=v2.0.0-rc1
-  - https://github.com/argoproj/argo-cd/manifests/base/repo-server?ref=v2.0.0-rc1
-  - https://github.com/argoproj/argo-cd/manifests/base/server?ref=v2.0.0-rc1
-  - https://github.com/argoproj/argo-cd/manifests/base/config?ref=v2.0.0-rc1
-  - https://github.com/argoproj/argo-cd/manifests/base/redis?ref=v2.0.0-rc1
+  - install.yaml
   - argocd-application.yaml
