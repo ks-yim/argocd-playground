@@ -4,3 +4,7 @@ kind: Kustomization
 resources:
   - ../../base/argocd
   - ../../base/argocd-image-updater
+  - ../../base/app-of-apps
+
+patchesStrategicMerge:
+  - app-of-apps.yaml
