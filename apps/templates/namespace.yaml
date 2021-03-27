@@ -1,9 +1,11 @@
-{{- range .Values.namespaces }}
+{{- if eq .Values.app.phase "beta" }}
+  {{- range .Values.namespaces }}
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: {{ . }}-{{ $.Values.app.phase }}
+  name: {{ . }}
   annotations:
     argocd.argoproj.io/sync-wave: "-1"
+  {{- end }}
   {{- end }}

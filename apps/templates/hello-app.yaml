@@ -8,7 +8,7 @@ metadata:
 spec:
   project: default
   destination:
-    namespace: hello-{{ .Values.app.phase }}
+    namespace: hello
     server: {{ .Values.destination.server }}
   syncPolicy:
     automated:
