@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: hello-app
+  name: hello-app-{{ .Values.app.phase }}
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
@@ -22,12 +22,4 @@ spec:
       releaseName: hello-app-{{ .Values.app.phase }}
       valueFiles:
         - values.yaml
-        {{- if eq "alpha" .Values.app.phase }}
-        - values-alpha.yaml
-        {{- else if eq "beta" .Values.app.phase }}
-        - values-beta.yaml
-        {{- else if eq "staging" .Values.app.phase }}
-        - values-staging.yaml
-        {{- else if eq "release" .Values.app.phase }}
-        - values-release.yaml
-        {{- end }}
+        - values-{{ .Values.app.phase }}.yaml
