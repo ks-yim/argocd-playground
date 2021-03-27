@@ -1,10 +1,10 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
+commonLabels:
+  channel.linecorp.com/phase: beta
+
 resources:
   - ../../base/argocd
   - ../../base/argocd-image-updater
-  - ../../base/app-of-apps
-
-patchesStrategicMerge:
   - app-of-apps.yaml

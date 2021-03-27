@@ -19,7 +19,7 @@ spec:
     path: charts/hello
     targetRevision: HEAD
     helm:
-      releaseName: ingress-nginx
+      releaseName: hello-app-{{ .Values.app.phase }}
       valueFiles:
         - values.yaml
         {{- if eq "alpha" .Values.app.phase }}

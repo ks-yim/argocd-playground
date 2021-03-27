@@ -15,3 +15,4 @@ spec:
     helm:
       valueFiles:
         - values.yaml
+        - values-alpha.yaml
