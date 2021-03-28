@@ -1,4 +1,4 @@
-{{- if eq .Values.app.phase "beta" }}
+{{- if has .Values.app.phase (list "beta" "release") }}
   {{- range .Values.namespaces }}
 ---
 apiVersion: v1
